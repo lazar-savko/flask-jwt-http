@@ -4,6 +4,10 @@ from functools import wraps  # Importing wraps
 from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Configuring Flask app
 app.config['JWT_SECRET_KEY'] = 'your_secret_key_here'  # Replace with a secure secret key
@@ -60,4 +64,4 @@ def admin_only():
     return jsonify(msg="Welcome, admin. This is an admin-only endpoint.")
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0")
+    app.run(port=os.getenv('PORT'), debug=True, host="0.0.0.0")
