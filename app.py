@@ -59,5 +59,5 @@ def protected():
 def admin_only():
     return jsonify(msg="Welcome, admin. This is an admin-only endpoint.")
 
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    app.run(port=os.getenv('PORT'), debug=True, host="0.0.0.0")
