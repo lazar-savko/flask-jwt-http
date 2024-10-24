@@ -1,12 +1,15 @@
 from flask import Flask, jsonify, request
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity, get_jwt
 from functools import wraps  # Importing wraps
-
+from flask_cors import CORS
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes
 
 # Configuring Flask app
 app.config['JWT_SECRET_KEY'] = 'your_secret_key_here'  # Replace with a secure secret key
 jwt = JWTManager(app)
+
+
 
 # Dummy user data for demonstration
 users = {
@@ -21,7 +24,7 @@ def admin_required(fn):
     def wrapper(*args, **kwargs):
         claims = get_jwt()
         if claims['role'] != 'admin':
-            return jsonify(msg='Admins only!'), 403
+            return jsonify(msg='You are not allowed to see this, you are not an admin!'), 403
         return fn(*args, **kwargs)
     return wrapper
 
