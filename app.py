@@ -17,7 +17,7 @@ app = Flask(__name__)
 app.config['JWT_SECRET_KEY'] = os.getenv('JWT_SECRET_KEY', 'super-secret-key')  # Use a strong secret key
 
 # ✅ Configure CORS to allow credentials
-CORS(app, supports_credentials=True)
+CORS(app, supports_credentials=True, origins=["http://localhost:5173"])
 
 # ✅ Fix: Ensure Flask uses correct cookie settings
 app.config['JWT_ACCESS_COOKIE_NAME'] = 'access_token'  # Matches Postman's stored cookie
