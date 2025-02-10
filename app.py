@@ -22,7 +22,7 @@ CORS(app, supports_credentials=True, origins=["http://localhost:5173"])
 # ✅ Fix: Ensure Flask uses correct cookie settings
 app.config['JWT_ACCESS_COOKIE_NAME'] = 'access_token'  # Matches Postman's stored cookie
 app.config['JWT_TOKEN_LOCATION'] = ['cookies']
-app.config['JWT_COOKIE_SECURE'] = False  # Set to True in production (HTTPS)
+app.config['JWT_COOKIE_SECURE'] = True
 app.config['JWT_COOKIE_HTTPONLY'] = True
 app.config['JWT_COOKIE_SAMESITE'] = 'Lax'
 
