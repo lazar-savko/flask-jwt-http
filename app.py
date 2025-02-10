@@ -75,7 +75,7 @@ def login():
     response = make_response(jsonify(msg="Login successful"))
     response.set_cookie(
         app.config['JWT_ACCESS_COOKIE_NAME'], access_token,
-        httponly=True, secure=app.config['JWT_COOKIE_SECURE'], samesite='Lax'
+        httponly=True, secure=app.config['JWT_COOKIE_SECURE'], samesite='None'
     )
 
     print(f"✅ Set-Cookie Header: {response.headers.get('Set-Cookie')}")  # Debugging
